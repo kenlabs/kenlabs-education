@@ -1,35 +1,14 @@
 import config from "./src/configs";
 
+const { head } = config.head;
 const { locale, availableLocales, fallbackLocale } = config.locales;
-const { gaId } = config.analytics;
 
 export default {
   ssr: false,
   target: "static",
   srcDir: "src/",
   components: true,
-  // Global page headers (https://go.nuxtjs.dev/config-head)
-  head: {
-    titleTemplate: "%s - nuxt",
-    title: "nuxt",
-    meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content: "",
-      },
-    ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap",
-      },
-      ...config.icons.map((href) => ({ rel: "stylesheet", href })),
-    ],
-  },
+  head,
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ["~/assets/scss/theme.scss"],
