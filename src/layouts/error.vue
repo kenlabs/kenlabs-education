@@ -1,34 +1,49 @@
 <template>
-  <v-card v-if="error.statusCode === 404" class="text-center w-full error-page pa-3">
-    <v-img src="/images/illustrations/404-illustration.svg" max-height="400" contain />
-    <div class="display-2 mt-10">How did you get here?</div>
-    <div class="mt-3 mb-6">Sorry we can't seem to find the page you're looking for.</div>
-    <v-text-field solo placeholder="Search website" large></v-text-field>
-    <v-btn :to="localePath('/')" block large color="primary">Send me Back</v-btn>
-  </v-card>
-  <v-card v-else class="text-center w-full error-page pa-3">
-    <v-img src="/images/illustrations/500-illustration.svg" max-height="400" contain />
-    <div class="display-2 mt-10">OOPS! Something went wrong here</div>
-    <div class="mt-3 mb-10">Our experts are working to fix the issue.</div>
-    <v-text-field solo placeholder="Search website"></v-text-field>
-    <v-btn :to="localePath('/')" block large color="primary">Send me back</v-btn>
+  <v-card class="text-center w-full pa-3" max-width="500px">
+    <v-img :src="getErrorImage()" max-height="400" contain />
+    <div class="display-2 mt-10">
+      {{ is404 ? $t("error.notFound.title") : $t("error.other.title") }}
+    </div>
+    <div class="my-3">
+      {{ is404 ? $t("error.notFound.desc") : $t("error.other.desc") }}
+    </div>
+    <v-dialog v-model="dialog" max-width="500px">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn v-bind="attrs" v-on="on" icon small class="my-1" color="secondary">
+          <v-icon small color="secondary">fa fa-info-circle</v-icon>
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title>{{ $t("error.notFound.title") }}</v-card-title>
+        <v-card-text v-text="error.message" />
+      </v-card>
+    </v-dialog>
+    <v-text-field solo large :placeholder="$t('error.search')"></v-text-field>
+    <v-btn :to="localePath('/')" block large color="primary">
+      {{ $t("error.back") }}
+    </v-btn>
   </v-card>
 </template>
 
 <script>
 export default {
-  layout: 'simple',
+  layout: "simple",
   props: {
     error: {
       type: Object,
-      default: () => {}
-    }
-  }
-}
+      default: () => {},
+    },
+  },
+  data() {
+    return {
+      dialog: false,
+      is404: this.error.statusCode === 404,
+    };
+  },
+  methods: {
+    getErrorImage() {
+      return this.is404 ? "/images/illustrations/404-illustration.svg" : "/images/illustrations/500-illustration.svg";
+    },
+  },
+};
 </script>
-
-<style>
-.error-page {
-  max-width: 500px;
-}
-</style>
