@@ -1,5 +1,6 @@
 import auth from "./auth";
 import analytics from "./analytics";
+import axios from "./axios";
 import currencies from "./currencies";
 import head from "./head";
 import locales from "./locales";
@@ -14,6 +15,7 @@ import toolbar from "./toolbar";
 export default {
   analytics,
   auth,
+  axios,
   currencies,
   head,
   locales,

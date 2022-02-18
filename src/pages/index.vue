@@ -1,13 +1,7 @@
 <template>
-  <div class="flex-grow-1">
-    <toolbar-language />
-  </div>
+  <div class="flex-grow-1"></div>
 </template>
 
 <script>
-import ToolbarLanguage from "@/components/toolbar/ToolbarLanguage";
-
-export default {
-  components: { ToolbarLanguage },
-};
+export default {};
 </script>

@@ -2,6 +2,8 @@ import config from "./src/configs";
 
 const { locale, availableLocales, fallbackLocale } = config.locales;
 
+const baseUrl = process.env.NODE_ENV === "production" ? config.axios.base.prod : config.axios.base.dev;
+
 export default {
   ssr: false,
   target: "static",
@@ -47,7 +49,13 @@ export default {
       },
     ],
   ],
+  env: {
+    BASE_URL: baseUrl,
+  },
   modules: ["@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxtjs/toast"],
   auth: config.auth,
   toast: config.toast,
+  axios: {
+    baseURL: baseUrl,
+  },
 };
