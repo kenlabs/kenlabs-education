@@ -1,31 +1,44 @@
+/**
+ * 货币参数
+ */
 export default {
-  // current currency
-  currency: {
-    label: 'USD',
+  current: {
+    label: "人民币",
     decimalDigits: 2,
-    decimalSeparator: '.',
-    thousandsSeparator: ',',
-    currencySymbol: '$',
+    decimalSeparator: ".",
+    thousandsSeparator: ",",
+    currencySymbol: "¥",
     currencySymbolNumberOfSpaces: 0,
-    currencySymbolPosition: 'left'
+    currencySymbolPosition: "left",
   },
 
-  // availabled currencies for user selection
-  availableCurrencies: [{
-    label: 'USD',
-    decimalDigits: 2,
-    decimalSeparator: '.',
-    thousandsSeparator: ',',
-    currencySymbol: '$',
-    currencySymbolNumberOfSpaces: 0,
-    currencySymbolPosition: 'left'
-  }, {
-    label: 'EUR',
-    decimalDigits: 2,
-    decimalSeparator: '.',
-    thousandsSeparator: ',',
-    currencySymbol: '€',
-    currencySymbolNumberOfSpaces: 1,
-    currencySymbolPosition: 'right'
-  }]
-}
+  availableCurrencies: [
+    {
+      label: "人民币",
+      decimalDigits: 2,
+      decimalSeparator: ".",
+      thousandsSeparator: ",",
+      currencySymbol: "¥",
+      currencySymbolNumberOfSpaces: 0,
+      currencySymbolPosition: "left",
+    },
+    {
+      label: "USD",
+      decimalDigits: 2,
+      decimalSeparator: ".",
+      thousandsSeparator: ",",
+      currencySymbol: "$",
+      currencySymbolNumberOfSpaces: 0,
+      currencySymbolPosition: "left",
+    },
+    {
+      label: "EUR",
+      decimalDigits: 2,
+      decimalSeparator: ".",
+      thousandsSeparator: ",",
+      currencySymbol: "€",
+      currencySymbolNumberOfSpaces: 1,
+      currencySymbolPosition: "right",
+    },
+  ],
+};

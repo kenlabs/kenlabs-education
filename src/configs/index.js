@@ -1,28 +1,27 @@
-import maps from "./maps";
-import time from "./time";
-import theme from "./theme";
-import toolbar from "./toolbar";
-import locales from "./locales";
+import auth from "./auth";
 import analytics from "./analytics";
 import currencies from "./currencies";
-import navigation from "./navigation";
-import auth from "./auth";
 import head from "./head";
+import locales from "./locales";
+import maps from "./maps";
+import navigation from "./navigation";
 import product from "./product";
+import theme from "./theme";
+import time from "./time";
 import toast from "./toast";
+import toolbar from "./toolbar";
 
 export default {
-  maps,
-  time,
-  theme,
-  toolbar,
-  locales,
   analytics,
-  currencies,
-  navigation,
-
   auth,
+  currencies,
   head,
+  locales,
+  maps,
+  navigation,
   product,
+  theme,
+  time,
   toast,
+  toolbar,
 };
