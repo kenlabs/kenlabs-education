@@ -1,13 +1,13 @@
 <template>
   <div class="flex-grow-1">
-    <toolbar-currency />
+    <toolbar-language />
   </div>
 </template>
 
 <script>
-import ToolbarCurrency from "@/components/toolbar/ToolbarCurrency";
+import ToolbarLanguage from "@/components/toolbar/ToolbarLanguage";
 
 export default {
-  components: { ToolbarCurrency },
+  components: { ToolbarLanguage },
 };
 </script>

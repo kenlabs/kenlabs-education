@@ -1,3 +1,6 @@
+/**
+ * 国际化语言参数
+ */
 export default {
   locale: "zh",
   fallbackLocale: "zh",

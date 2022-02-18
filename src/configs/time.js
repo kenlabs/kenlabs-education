@@ -1,7 +1,8 @@
-// time format for vue filter `| formatDate`
+/**
+ * 时区参数
+ * 用于格式化时间和日期
+ */
 export default {
-  // https://momentjs.com/timezone/docs/#/using-timezones/
-  zone: 'America/New_York',
-  // https://momentjs.com/docs/#/displaying/format/
-  format: 'LL'
-}
+  zone: "Asia/Shanghai",
+  format: "LL",
+};
