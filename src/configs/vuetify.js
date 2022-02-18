@@ -1,15 +1,15 @@
-import theme from '@/configs/theme.js'
+import theme from "./theme.js";
 
 export default {
   rtl: theme.isRTL,
   theme: {
-    dark: theme.globalTheme === 'dark',
+    dark: theme.globalTheme === "dark",
     options: {
-      customProperties: true
+      customProperties: true,
     },
     themes: {
       dark: theme.dark,
-      light: theme.light
-    }
-  }
-}
+      light: theme.light,
+    },
+  },
+};
