@@ -1,4 +1,4 @@
-import theme from "./theme.js";
+import theme from "@/configs/theme.js";
 
 export default {
   rtl: theme.isRTL,

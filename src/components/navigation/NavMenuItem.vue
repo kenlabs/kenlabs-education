@@ -1,17 +1,11 @@
 <template>
+  <!-- 菜单项组件 -->
   <div>
-    <v-list-item
-      v-if="!menuItem.items"
-      :input-value="menuItem.value"
-      :to="localePath(menuItem.link)"
-      :exact="menuItem.exact"
-      :disabled="menuItem.disabled"
-      active-class="primary--text"
-      link
-    >
+    <!-- 渲染没有子菜单的情况 -->
+    <v-list-item v-if="!menuItem.children.length" :input-value="menuItem.value" :to="localePath(menuItem.link)" :exact="menuItem.exact" :disabled="menuItem.disabled" active-class="primary--text" link>
       <v-list-item-icon>
         <v-icon :small="small" :class="{ 'grey--text': menuItem.disabled }">
-          {{ menuItem.icon || 'mdi-circle-medium' }}
+          {{ menuItem.icon || "mdi-circle-medium" }}
         </v-icon>
       </v-list-item-icon>
       <v-list-item-content>
@@ -21,18 +15,11 @@
       </v-list-item-content>
     </v-list-item>
 
-    <v-list-group
-      v-else
-      :value="menuItem.regex ? menuItem.regex.test($route.path) : false"
-      :disabled="menuItem.disabled"
-      :sub-group="subgroup"
-      :to="localePath(menuItem.link)"
-      link
-    >
-
+    <!-- 如果有子菜单，则渲染子菜单列表 -->
+    <v-list-group v-else :value="menuItem.regex ? menuItem.regex.test($route.path) : false" :disabled="menuItem.disabled" :sub-group="subgroup" :to="localePath(menuItem.link)" link>
       <template v-slot:activator>
         <v-list-item-icon v-if="!subgroup">
-          <v-icon :small="small">{{ menuItem.icon || 'mdi-circle-medium' }}</v-icon>
+          <v-icon :small="small">{{ menuItem.icon || "mdi-circle-medium" }}</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
@@ -42,7 +29,6 @@
       </template>
 
       <slot></slot>
-
     </v-list-group>
   </div>
 </template>
@@ -60,16 +46,16 @@ export default {
   props: {
     menuItem: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     subgroup: {
       type: Boolean,
-      default: false
+      default: false,
     },
     small: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: true,
+    },
+  },
+};
 </script>

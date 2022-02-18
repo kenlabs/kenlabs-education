@@ -1,33 +1,24 @@
 <template>
   <v-app>
     <div v-shortkey="['ctrl', '/']" class="d-flex flex-grow-1" @shortkey="onKeyup">
-      <!-- Navigation -->
       <v-navigation-drawer v-model="drawer" app floating class="elevation-1" :right="$vuetify.rtl" :light="menuTheme === 'light'" :dark="menuTheme === 'dark'">
-        <!-- Navigation menu info -->
         <template v-slot:prepend>
-          <div class="pa-2">
-            <div class="title font-weight-bold text-uppercase primary--text">{{ product.name }}</div>
-            <div class="overline grey--text">{{ product.desc }}</div>
-          </div>
+          <v-list>
+            <v-list-item to="/">
+              <v-list-item-avatar>
+                <v-img :src="product.logo"></v-img>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title class="primary--text" v-text="product.name" />
+                <v-list-item-subtitle class="grey--text" v-text="product.desc" />
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </template>
 
-        <!-- Navigation menu -->
-        <main-menu :menu="navigation.menu" />
-
-        <!-- Navigation menu footer -->
-        <template v-slot:append>
-          <!-- Footer navigation links -->
-          <div class="pa-1 text-center">
-            <v-btn v-for="(item, index) in navigation.footer" :key="index" :href="item.href" :target="item.target" small text>
-              {{ item.key ? $t(item.key) : item.text }}
-            </v-btn>
-          </div>
-
-          <!-- REMOVE ME - Shop Demo purposes -->
-          <div class="pa-2 pt-1 text-center">
-            <v-btn class="buy-button" dark block color="#EE44AA" href="https://store.vuetifyjs.com/products/lux-admin-pro/" target="_blank"> Buy Now </v-btn>
-          </div>
-        </template>
+        <v-skeleton-loader :loading="status.loading" type="list-item@7">
+          <main-menu :menu="menu.children" />
+        </v-skeleton-loader>
       </v-navigation-drawer>
 
       <!-- Toolbar -->
@@ -91,25 +82,34 @@
 
 <script>
 import { mapState } from "vuex";
-
-// navigation menu configurations
-import config from "../configs";
+import MainMenu from "@/components/navigation/MainMenu";
 
 export default {
+  components: { MainMenu },
   data() {
     return {
       drawer: null,
       showSearch: false,
-
-      navigation: config.navigation,
+      menu: {},
+      status: { loading: false },
     };
   },
   computed: {
-    ...mapState("app", ["product", "isContentBoxed", "menuTheme", "toolbarTheme", "isToolbarDetached"]),
+    ...mapState("system", ["product", "navigation", "isContentBoxed", "menuTheme", "toolbarTheme", "isToolbarDetached"]),
+  },
+  mounted() {
+    this.fetchMenu();
   },
   methods: {
     onKeyup(e) {
       this.$refs.search.focus();
+    },
+    fetchMenu() {
+      this.status.loading = true;
+      this.$axios.get(`/menu/${this.navigation.admin}`).then((res) => {
+        this.menu = res.data;
+        this.status.loading = false;
+      });
     },
   },
 };
