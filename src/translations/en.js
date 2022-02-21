@@ -63,7 +63,10 @@ export default {
   menu: {
     search: 'Search (press "ctrl + /" to focus)',
     logout: "Logout",
-    profile: "Profile",
+    profile: {
+      info: "Profile",
+      security: "Security",
+    },
   },
   // Vuetify components translations
   $vuetify: {

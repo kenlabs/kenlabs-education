@@ -63,7 +63,10 @@ export default {
   menu: {
     search: "搜索（Ctrl + /）",
     logout: "注销登录",
-    profile: "个人资料",
+    profile: {
+      info: "个人资料",
+      security: "账户安全",
+    },
   },
   $vuetify: {
     badge: "徽章",
