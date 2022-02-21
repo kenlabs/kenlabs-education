@@ -1,9 +1,7 @@
 <!-- 个人中心页面 -->
 <template>
   <div class="flex-grow-1 d-flex">
-    <div>
-      <user-info-card :account="$auth.user" />
-    </div>
+    <user-info-card :account="$auth.user" />
     <div class="ml-2 flex-grow-1">
       <user-info-form />
     </div>
