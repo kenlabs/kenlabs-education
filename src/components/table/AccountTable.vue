@@ -22,13 +22,13 @@
       <avatar :value="item" />
     </template>
     <template #item.status="{ item }">
-      <v-icon v-if="item.enabled" color="green" x-small>fa fa-check</v-icon>
-      <v-icon v-else color="orange" x-small>fa fa-user-lock</v-icon>
+      <icon v-if="item.enabled" color="green" small>check</icon>
+      <icon v-else color="grey" small>lock</icon>
     </template>
     <template #item.admin="{ item }">
       <icon v-if="item.admin" color="red" fade small>user-cog</icon>
-      <icon v-else-if="item.authorities.length > 0" color="green" small>user-lock</icon>
-      <icon v-else color="black" small>user</icon>
+      <icon v-else-if="item.roles.length > 0" color="green" small>user-lock</icon>
+      <icon v-else color="grey" small>user</icon>
     </template>
     <template #item.loginAt="{ item }">
       <v-list-item dense two-line>
