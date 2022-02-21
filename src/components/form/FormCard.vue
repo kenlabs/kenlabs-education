@@ -4,7 +4,7 @@
     <!-- 表单信息组件 -->
     <v-list-item>
       <v-list-item-icon v-if="icon">
-        <v-icon v-text="icon" />
+        <icon :icon="icon" />
       </v-list-item-icon>
       <v-list-item-content>
         <v-list-item-title>
@@ -36,8 +36,11 @@
 </template>
 
 <script>
+import Icon from "@/components/common/Icon";
+
 export default {
   name: "FormCard",
+  components: { Icon },
   props: {
     title: {
       type: String,

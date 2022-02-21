@@ -14,6 +14,7 @@ export default {
     { src: "~/plugins/animate.js", mode: "client" },
     { src: "~/plugins/axios.js", mode: "client" },
     { src: "~/plugins/clipboard.js", mode: "client" },
+    { src: "~/plugins/vue-permission.js", mode: "client" },
     { src: "~/plugins/vue-shortkey.js", mode: "client" },
     { src: "~/filters/capitalize.js" },
     { src: "~/filters/formatCurrency.js" },

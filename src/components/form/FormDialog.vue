@@ -31,7 +31,7 @@ export default {
     },
     persistent: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     scrollable: {
       type: Boolean,
