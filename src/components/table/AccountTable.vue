@@ -13,7 +13,7 @@
   >
     <template #tableActions>
       <v-btn v-permission:account:create color="primary" text @click="$refs.table.openCreateForm()">新增账户</v-btn>
-      <v-btn v-permission:account.statistic:query color="green" text>统计数据</v-btn>
+      <v-btn v-permission:account.statistic:query color="green" text @click="$emit('statistic')">统计数据</v-btn>
     </template>
     <template #rowActions="{ item }">
       <v-btn v-permission:account:update :to="`/accounts/${item.id}`" color="primary" small text>查看</v-btn>
