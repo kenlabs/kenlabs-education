@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <div v-shortkey="['ctrl', '/']" class="d-flex flex-grow-1" @shortkey="onKeyup">
+    <div class="d-flex flex-grow-1">
+      <!-- 侧边导航栏 -->
       <v-navigation-drawer v-model="drawer" app floating class="elevation-1" :right="$vuetify.rtl" :light="menuTheme === 'light'" :dark="menuTheme === 'dark'">
         <template v-slot:prepend>
           <v-list>
@@ -21,39 +22,19 @@
         </v-skeleton-loader>
       </v-navigation-drawer>
 
-      <!-- Toolbar -->
-      <v-app-bar app :color="isToolbarDetached ? 'surface' : undefined" :flat="isToolbarDetached" :light="toolbarTheme === 'light'" :dark="toolbarTheme === 'dark'">
-        <v-card class="flex-grow-1 d-flex" :class="[isToolbarDetached ? 'pa-1 mt-3 mx-1' : 'pa-0 ma-0']" :flat="!isToolbarDetached">
+      <!-- 顶部工具栏 -->
+      <v-app-bar
+        app
+        :color="theme.isToolbarDetached ? 'surface' : undefined"
+        :flat="theme.isToolbarDetached"
+        :light="theme.toolbarTheme === 'light'"
+        :dark="theme.toolbarTheme === 'dark'"
+      >
+        <v-card class="flex-grow-1 d-flex" :class="[theme.isToolbarDetached ? 'pa-1 mt-3 mx-1' : 'pa-0 ma-0']" :flat="!theme.isToolbarDetached">
           <div class="d-flex flex-grow-1 align-center">
-            <!-- search input mobile -->
-            <v-text-field v-if="showSearch" append-icon="mdi-close" placeholder="Search" prepend-inner-icon="mdi-magnify" hide-details solo flat autofocus @click:append="showSearch = false"></v-text-field>
-
-            <div v-else class="d-flex flex-grow-1 align-center">
+            <div class="d-flex flex-grow-1 align-center">
               <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-
-              <v-spacer class="d-none d-lg-block"></v-spacer>
-
-              <!-- search input desktop -->
-              <v-text-field ref="search" class="mx-1 hidden-xs-only" :placeholder="$t('menu.search')" prepend-inner-icon="mdi-magnify" hide-details filled rounded dense></v-text-field>
-
-              <v-spacer class="d-block d-sm-none"></v-spacer>
-
-              <v-btn class="d-block d-sm-none" icon @click="showSearch = true">
-                <v-icon>mdi-magnify</v-icon>
-              </v-btn>
-
-              <toolbar-language />
-
-              <div class="hidden-xs-only mx-1">
-                <toolbar-currency />
-              </div>
-
-              <toolbar-apps />
-
-              <div :class="[$vuetify.rtl ? 'ml-1' : 'mr-1']">
-                <toolbar-notifications />
-              </div>
-
+              <v-spacer />
               <toolbar-user />
             </div>
           </div>
@@ -61,7 +42,7 @@
       </v-app-bar>
 
       <v-main>
-        <v-container class="fill-height" :fluid="!isContentBoxed">
+        <v-container class="fill-height" :fluid="!theme.isContentBoxed">
           <v-layout>
             <nuxt />
           </v-layout>
@@ -70,9 +51,8 @@
         <v-footer app inset>
           <v-spacer></v-spacer>
           <div class="overline">
-            Built with
-            <v-icon small color="pink">mdi-heart</v-icon>
-            <a class="text-decoration-none" href="https://indielayer.com" target="_blank">@indielayer</a>
+            <v-icon small>fa-copyright</v-icon>
+            <a class="text-decoration-none" target="_blank" :href="product.links.www" v-text="product.name" />
           </div>
         </v-footer>
       </v-main>
@@ -83,27 +63,24 @@
 <script>
 import { mapState } from "vuex";
 import MainMenu from "@/components/navigation/MainMenu";
+import ToolbarUser from "@/components/toolbar/ToolbarUser";
 
 export default {
-  components: { MainMenu },
+  components: { MainMenu, ToolbarUser },
   data() {
     return {
       drawer: null,
-      showSearch: false,
       menu: {},
       status: { loading: false },
     };
   },
   computed: {
-    ...mapState("system", ["product", "navigation", "isContentBoxed", "menuTheme", "toolbarTheme", "isToolbarDetached"]),
+    ...mapState("system", ["product", "navigation", "theme", "isContentBoxed", "menuTheme", "toolbarTheme", "isToolbarDetached"]),
   },
   mounted() {
     this.fetchMenu();
   },
   methods: {
-    onKeyup(e) {
-      this.$refs.search.focus();
-    },
     fetchMenu() {
       this.status.loading = true;
       this.$axios.get(`/menu/${this.navigation.admin}`).then((res) => {

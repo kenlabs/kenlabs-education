@@ -12,6 +12,7 @@ export default {
   css: ["~/assets/scss/theme.scss"],
   plugins: [
     { src: "~/plugins/animate.js", mode: "client" },
+    { src: "~/plugins/axios.js", mode: "client" },
     { src: "~/plugins/clipboard.js", mode: "client" },
     { src: "~/plugins/vue-shortkey.js", mode: "client" },
     { src: "~/filters/capitalize.js" },
@@ -49,6 +50,9 @@ export default {
       },
     ],
   ],
+  router: {
+    middleware: ["auth"],
+  },
   env: {
     BASE_URL: baseUrl,
   },
