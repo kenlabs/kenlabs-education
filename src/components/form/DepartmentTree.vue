@@ -63,12 +63,11 @@
 <script>
 import ConfirmDialog from "@/components/common/ConfirmDialog";
 import FormDialog from "@/components/form/FormDialog";
-import DepartmentSelect from "@/components/form/DepartmentSelect";
 import Icon from "@/components/common/Icon";
 
 export default {
   name: "DepartmentTree",
-  components: { Icon, ConfirmDialog, DepartmentSelect, FormDialog },
+  components: { Icon, ConfirmDialog, FormDialog },
   props: {
     title: {
       type: String,
@@ -81,10 +80,6 @@ export default {
     icon: {
       type: String,
       default: "sitemap",
-    },
-    returnId: {
-      type: Boolean,
-      default: false,
     },
   },
   data: () => ({
@@ -179,16 +174,7 @@ export default {
       } else {
         this.select = null;
       }
-
-      if (this.select) {
-        if (this.returnId) {
-          this.$emit("change", this.select.id);
-        } else {
-          this.$emit("change", this.select);
-        }
-      } else {
-        this.$emit("change", null);
-      }
+      this.$emit("change", this.select);
     },
     submit(status, form) {
       if (this.dialog.target.id) {
