@@ -19,10 +19,10 @@
       <v-list-item-action class="d-flex flex-row">
         <slot name="infoActions" />
         <v-btn v-if="!disableRefreshAction" fab small text :loading="status.fetching" :disabled="status.fetching" @click="fetchItems">
-          <v-icon small>fa-sync</v-icon>
+          <icon small>arrows-rotate</icon>
         </v-btn>
         <v-btn v-if="!disableCustomColumns" fab small text @click="columnDialog = true">
-          <v-icon small>fa fa-cog</v-icon>
+          <icon small>cog</icon>
         </v-btn>
       </v-list-item-action>
     </v-list-item>
@@ -61,7 +61,7 @@
             @keypress.enter="fetchItems()"
           >
             <template #append>
-              <v-icon v-text="filterIcon" />
+              <icon :icon="filterIcon" />
             </template>
           </v-text-field>
         </div>
@@ -105,11 +105,18 @@
     <!-- 新增、编辑表单模态框 -->
     <v-dialog v-model="dialog.show" :width="dialogWidth">
       <v-card>
-        <v-card-title v-text="dialog.title" />
-        <v-card-subtitle>
-          <!-- 表单描述信息插槽 -->
-          <slot name="formSubtitle" v-bind:item="dialog.item" />
-        </v-card-subtitle>
+        <v-list-item>
+          <v-list-item-icon v-if="icon">
+            <icon :icon="icon" />
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="dialog.title" />
+            <v-list-item-subtitle>
+              <!-- 表单描述信息插槽 -->
+              <slot name="formSubtitle" v-bind:item="dialog.item" />
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
         <v-divider class="mb-2" />
         <v-card-text>
           <v-form ref="form" :disabled="status.submitting">
@@ -126,8 +133,15 @@
     <!-- 自定义列选择模态框 -->
     <v-dialog v-model="columnDialog" :width="dialogWidth">
       <v-card>
-        <v-card-title>定制列</v-card-title>
-        <v-card-subtitle>勾选表格需要显示的列</v-card-subtitle>
+        <v-list-item>
+          <v-list-item-icon>
+            <icon spin>cog</icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>定制列</v-list-item-title>
+            <v-list-item-subtitle>勾选表格需要显示的列</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
         <v-divider />
         <v-card-text>
           <v-row dense no-gutters>
@@ -262,7 +276,7 @@ export default {
     },
     filterIcon: {
       type: String,
-      default: "mdi-magnify",
+      default: "magnifying-glass",
     },
 
     /*

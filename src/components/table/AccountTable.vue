@@ -26,9 +26,23 @@
       <v-icon v-else color="orange" x-small>fa fa-user-lock</v-icon>
     </template>
     <template #item.admin="{ item }">
-      <v-icon v-if="item.admin" color="primary" x-small>fa fa-user-cog</v-icon>
-      <v-icon v-else-if="item.authorities.length > 0" color="green" x-small>fa fa-user-lock</v-icon>
-      <v-icon v-else color="grey" x-small>fa fa-user</v-icon>
+      <icon v-if="item.admin" color="red" fade small>user-cog</icon>
+      <icon v-else-if="item.authorities.length > 0" color="green" small>user-lock</icon>
+      <icon v-else color="black" small>user</icon>
+    </template>
+    <template #item.loginAt="{ item }">
+      <v-list-item dense two-line>
+        <v-list-item-content>
+          <v-list-item-subtitle v-if="item.loginAt" class="d-flex">
+            <icon x-small left full-width>right-to-bracket</icon>
+            <div v-text="item.loginAt" />
+          </v-list-item-subtitle>
+          <v-list-item-subtitle v-if="item.createAt" class="d-flex">
+            <icon x-small left full-width>calendar-plus</icon>
+            <div v-text="item.createAt" />
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     </template>
     <template #form="{ item }">
       <v-row dense>
@@ -113,12 +127,6 @@ export default {
           sortable: false,
         },
         {
-          text: "状态",
-          value: "status",
-          align: "center",
-          slot: true,
-        },
-        {
           text: "权限",
           value: "admin",
           align: "center",
@@ -126,43 +134,16 @@ export default {
           slot: true,
         },
         {
-          text: "性别",
-          value: "sex",
+          text: "手机号",
+          value: "mobile",
           align: "center",
-          sortable: true,
-          width: 1,
+          sortable: false,
         },
         {
-          text: "民族",
-          value: "nation",
+          text: "邮箱",
+          value: "email",
           align: "center",
-          sortable: true,
-          width: 1,
-        },
-        {
-          text: "语言",
-          value: "language",
-          align: "center",
-          sortable: true,
-          width: 1,
-        },
-        {
-          text: "国家",
-          value: "country",
-          align: "center",
-          sortable: true,
-        },
-        {
-          text: "省份",
-          value: "province",
-          align: "center",
-          sortable: true,
-        },
-        {
-          text: "城市",
-          value: "city",
-          align: "center",
-          sortable: true,
+          sortable: false,
         },
         {
           text: "备注",
@@ -172,11 +153,21 @@ export default {
           divider: true,
         },
         {
-          text: "登录时间",
+          text: "状态",
+          value: "status",
+          align: "center",
+          slot: true,
+          sortable: false,
+          divider: true,
+        },
+        {
+          text: "时间",
           value: "loginAt",
           align: "center",
           sortable: true,
+          slot: true,
           divider: true,
+          width: 1,
         },
       ],
     };
