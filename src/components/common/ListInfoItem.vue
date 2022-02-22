@@ -8,11 +8,11 @@
       <slot name="icon" />
     </v-list-item-icon>
     <v-list-item-content>
-      <v-list-item-title :class="{ wrapTitle: 'text-wrap' }">
+      <v-list-item-title :class="{ 'text-wrap': wrapTitle }">
         {{ title }}
         <slot name="title" />
       </v-list-item-title>
-      <v-list-item-subtitle :class="{ wrapSubtitle: 'text-wrap' }">
+      <v-list-item-subtitle :class="{ 'text-wrap': wrapSubtitle }">
         {{ subtitle }}
         <slot name="subtitle" />
       </v-list-item-subtitle>
