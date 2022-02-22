@@ -31,6 +31,7 @@ export default {
         treeShake: true,
         defaultAssets: {
           font: false,
+          icons: false,
         },
       },
     ],

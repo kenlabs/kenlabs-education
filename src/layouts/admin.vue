@@ -4,17 +4,15 @@
       <!-- 侧边导航栏 -->
       <v-navigation-drawer v-model="drawer" app floating class="elevation-1" :right="$vuetify.rtl" :light="menuTheme === 'light'" :dark="menuTheme === 'dark'">
         <template v-slot:prepend>
-          <v-list>
-            <v-list-item to="/">
-              <v-list-item-avatar>
-                <v-img :src="product.logo"></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title class="primary--text" v-text="product.name" />
-                <v-list-item-subtitle class="grey--text" v-text="product.desc" />
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
+          <v-list-item to="/">
+            <v-list-item-avatar>
+              <v-img :src="product.logo"></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="primary--text" v-text="product.name" />
+              <v-list-item-subtitle class="grey--text" v-text="product.desc" />
+            </v-list-item-content>
+          </v-list-item>
         </template>
 
         <v-skeleton-loader :loading="status.loading" type="list-item@7">

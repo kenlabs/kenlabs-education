@@ -22,7 +22,6 @@ export default function ({ app, $axios }) {
           message = "网络错误";
         }
       } else {
-        console.log(response);
         message = "未知错误";
       }
     } else if (error.message) {

@@ -40,21 +40,15 @@
           </v-list-item-title>
         </v-list-item-content>
       </template>
-
+      <template #appendIcon>
+        <icon x-small>chevron-down</icon>
+      </template>
       <slot></slot>
     </v-list-group>
   </div>
 </template>
 
 <script>
-/*
-|---------------------------------------------------------------------
-| Navigation Menu Item Component
-|---------------------------------------------------------------------
-|
-| Navigation items for the NavMenu component
-|
-*/
 import Icon from "@/components/common/Icon";
 
 export default {
