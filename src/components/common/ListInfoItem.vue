@@ -8,11 +8,11 @@
       <slot name="icon" />
     </v-list-item-icon>
     <v-list-item-content>
-      <v-list-item-title>
+      <v-list-item-title :class="{ wrapTitle: 'text-wrap' }">
         {{ title }}
         <slot name="title" />
       </v-list-item-title>
-      <v-list-item-subtitle>
+      <v-list-item-subtitle :class="{ wrapSubtitle: 'text-wrap' }">
         {{ subtitle }}
         <slot name="subtitle" />
       </v-list-item-subtitle>
@@ -32,11 +32,13 @@ export default {
   components: { Icon },
   props: {
     icon: String,
-    title: String,
-    subtitle: String,
-    text: String,
+    title: String | Number,
+    subtitle: String | Number,
+    text: String | Number,
     advanceIcon: Boolean,
     disabled: Boolean,
+    wrapTitle: Boolean,
+    wrapSubtitle: Boolean,
   },
 };
 </script>
