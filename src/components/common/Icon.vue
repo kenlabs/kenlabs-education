@@ -236,7 +236,7 @@ export default {
       /*
        * 解析图标
        * */
-      if (this.iconName.startsWith("fa-")) {
+      if (this.iconName.startsWith("fa")) {
         segments.push(this.iconName);
       } else {
         segments.push(`fa-${this.iconName}`);

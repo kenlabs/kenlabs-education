@@ -19,7 +19,7 @@
       <v-btn v-permission:account:update :to="`/accounts/${item.id}`" color="primary" small text>查看</v-btn>
     </template>
     <template #item.avatar="{ item }">
-      <avatar :value="item" />
+      <avatar :value="item" size="32" />
     </template>
     <template #item.status="{ item }">
       <icon v-if="item.enabled" color="green" small>check</icon>

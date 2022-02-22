@@ -8,8 +8,14 @@
       <slot name="icon" />
     </v-list-item-icon>
     <v-list-item-content>
-      <v-list-item-title v-text="title" />
-      <v-list-item-subtitle v-text="subtitle" />
+      <v-list-item-title>
+        {{ title }}
+        <slot name="title" />
+      </v-list-item-title>
+      <v-list-item-subtitle>
+        {{ subtitle }}
+        <slot name="subtitle" />
+      </v-list-item-subtitle>
     </v-list-item-content>
     <v-list-item-action-text v-text="text" />
     <v-list-item-action>
