@@ -2,7 +2,7 @@
 <template>
   <v-dialog ref="dialog" v-model="dialog.show" persistent :width="width" :return-value.sync="time">
     <template #activator="{ on, attrs }">
-      <v-text-field v-bind="attrs" v-on="on" readonly dense outlined hide-details :label="label" :prepend-icon="icon" :disabled="disabled" :value="value" />
+      <v-text-field v-bind="attrs" v-on="on" readonly dense outlined hide-details :label="label" :disabled="disabled" :value="value" />
     </template>
     <v-time-picker
       v-model="time"
@@ -42,10 +42,6 @@ export default {
     label: {
       type: String,
       default: "选择时间",
-    },
-    icon: {
-      type: String,
-      default: "far fa-clock",
     },
     width: {
       type: Number,
