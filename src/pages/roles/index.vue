@@ -93,92 +93,94 @@ export default {
       title: "角色管理",
     };
   },
-  data: () => ({
-    defaultDialogItem: {
-      name: null,
-      remark: null,
-      sort: 0,
-      dataScope: "SELF",
-    },
-    filterFields: [
-      {
-        name: "角色名称",
-        desc: "输入角色名称模糊搜索",
-        value: "name",
+  data() {
+    return {
+      defaultDialogItem: {
+        name: null,
+        remark: null,
+        sort: 0,
+        dataScope: "SELF",
       },
-      {
-        name: "角色备注",
-        desc: "输入角色备注模糊搜索",
-        value: "remark",
+      filterFields: [
+        {
+          name: "角色名称",
+          desc: "输入角色名称模糊搜索",
+          value: "name",
+        },
+        {
+          name: "角色备注",
+          desc: "输入角色备注模糊搜索",
+          value: "remark",
+        },
+      ],
+      dataScopes: [
+        {
+          text: "所有部门",
+          value: "ALL",
+        },
+        {
+          text: "本部门及下级部门",
+          value: "DEPARTMENT_AND_LOWER",
+        },
+        {
+          text: "仅本部门",
+          value: "DEPARTMENT_ONLY",
+        },
+        {
+          text: "仅本人",
+          value: "SELF",
+        },
+        {
+          text: "自定义",
+          value: "CUSTOM",
+        },
+      ],
+      headers: [
+        {
+          text: "角色名称",
+          value: "name",
+          align: "center",
+        },
+        {
+          text: "角色排序",
+          value: "sort",
+          align: "center",
+        },
+        {
+          text: "数据访问级别",
+          value: "dataScope",
+          align: "center",
+          sortable: false,
+          slot: true,
+        },
+        {
+          text: "权限数量",
+          value: "permissions",
+          align: "center",
+          sortable: false,
+          slot: true,
+        },
+        {
+          text: "角色备注",
+          value: "remark",
+          align: "center",
+          sortable: false,
+        },
+      ],
+      permission: {
+        status: {
+          loading: false,
+          submitting: false,
+        },
+        items: [],
+        selected: [],
+        dialog: {
+          show: false,
+          item: {},
+        },
       },
-    ],
-    dataScopes: [
-      {
-        text: "所有部门",
-        value: "ALL",
-      },
-      {
-        text: "本部门及下级部门",
-        value: "DEPARTMENT_AND_LOWER",
-      },
-      {
-        text: "仅本部门",
-        value: "DEPARTMENT_ONLY",
-      },
-      {
-        text: "仅本人",
-        value: "SELF",
-      },
-      {
-        text: "自定义",
-        value: "CUSTOM",
-      },
-    ],
-    headers: [
-      {
-        text: "角色名称",
-        value: "name",
-        align: "center",
-      },
-      {
-        text: "角色排序",
-        value: "sort",
-        align: "center",
-      },
-      {
-        text: "数据访问级别",
-        value: "dataScope",
-        align: "center",
-        sortable: false,
-        slot: true,
-      },
-      {
-        text: "权限数量",
-        value: "permissions",
-        align: "center",
-        sortable: false,
-        slot: true,
-      },
-      {
-        text: "角色备注",
-        value: "remark",
-        align: "center",
-        sortable: false,
-      },
-    ],
-    permission: {
-      status: {
-        loading: false,
-        submitting: false,
-      },
-      items: [],
-      selected: [],
-      dialog: {
-        show: false,
-        item: {},
-      },
-    },
-  }),
+    };
+  },
   mounted() {
     this.fetchPermissions();
   },
