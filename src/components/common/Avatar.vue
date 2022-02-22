@@ -22,7 +22,7 @@ export default {
   computed: {
     result() {
       if (this.value) {
-        if (this.value instanceof String) {
+        if (typeof this.value === "string") {
           return this.value;
         } else {
           return this.value.avatar;
