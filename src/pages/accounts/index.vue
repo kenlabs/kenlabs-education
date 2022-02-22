@@ -20,22 +20,22 @@
         <v-card-text>
           <v-row dense>
             <v-col cols="4">
-              <statistic label="今日登录" :value="statistic.result.todayLoginCount" color="red" />
+              <statistic label="今日登录" :value="statistic.result.todayLoginCount" color="primary" />
             </v-col>
             <v-col cols="4">
-              <statistic label="最近7天" :value="statistic.result.weekLoginCount" color="red" />
+              <statistic label="最近7天" :value="statistic.result.weekLoginCount" color="primary" />
             </v-col>
             <v-col cols="4">
-              <statistic label="最近30天" :value="statistic.result.monthLoginCount" color="red" />
+              <statistic label="最近30天" :value="statistic.result.monthLoginCount" color="primary" />
             </v-col>
             <v-col cols="4">
-              <statistic label="最近90天" :value="statistic.result.seasonLoginCount" color="red" />
+              <statistic label="最近90天" :value="statistic.result.seasonLoginCount" color="primary" />
             </v-col>
             <v-col cols="4">
-              <statistic label="最近一年" :value="statistic.result.yearLoginCount" color="red" />
+              <statistic label="最近一年" :value="statistic.result.yearLoginCount" color="primary" />
             </v-col>
             <v-col cols="4">
-              <statistic label="总账户数" :value="statistic.result.totalLoginCount" color="red" />
+              <statistic label="总账户数" :value="statistic.result.totalLoginCount" color="primary" />
             </v-col>
           </v-row>
         </v-card-text>
