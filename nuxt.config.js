@@ -9,6 +9,7 @@ export default {
   target: "static",
   srcDir: "src/",
   head: config.head,
+  server: config.server,
   css: ["~/assets/scss/theme.scss"],
   plugins: [
     { src: "~/plugins/animate.js", mode: "client" },

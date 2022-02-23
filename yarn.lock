@@ -1472,12 +1472,10 @@
   resolved "https://registry.npmmirror.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@tinymce/tinymce-vue@^4.0.6":
-  version "4.0.6"
-  resolved "https://registry.npmmirror.com/@tinymce/tinymce-vue/-/tinymce-vue-4.0.6.tgz#8744d3b5c6e07eff0a037301da0225f0d49a038e"
-  integrity sha512-qZ6tC1v58bILOYFnYxBgDCtryDYG60TO0Fiio8nBoycxcyafMnDrDQuXaSTGDXwZ/AOcQ0ZS1CYvnEFdG6S2tg==
-  dependencies:
-    tinymce "^5.5.0"
+"@tinymce/tinymce-vue@^3":
+  version "3.2.8"
+  resolved "https://registry.npmmirror.com/@tinymce/tinymce-vue/-/tinymce-vue-3.2.8.tgz#014571b52ec8fa83665a7fa887bf65140207de71"
+  integrity sha512-jEz+NZ0g+FZFz273OEUWz9QkwPMyjc5AJYyxOgu51O1Y5UaJ/6IUddXTX6A20mwCleEv5ebwNYdalviafx4fnA==
 
 "@types/anymatch@*":
   version "3.0.0"
@@ -8267,7 +8265,7 @@ timsort@^0.3.0:
   resolved "https://registry.npmmirror.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha512-qsdtZH+vMoCARQtyod4imc2nIJwg9Cc7lPRrw9CzF8ZKR0khdr8+2nX80PBhET3tcyTtJDxAffGh2rXH4tyU8A==
 
-tinymce@^5.10.3, tinymce@^5.5.0:
+tinymce@^5.10.3:
   version "5.10.3"
   resolved "https://registry.npmmirror.com/tinymce/-/tinymce-5.10.3.tgz#9485cf00159fd70c4948cb5e9dd49bce2a775899"
   integrity sha512-O59ssHNnujWvSk5Gt8hIGrdNCMKVWVQv9F8siAgLTRgTh0t3NDHrP1UlLtCxArUi9DPWZvlBeUz8D5fJTu7vnA==

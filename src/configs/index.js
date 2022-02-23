@@ -7,6 +7,7 @@ import locales from "./locales";
 import maps from "./maps";
 import navigation from "./navigation";
 import product from "./product";
+import server from "./server";
 import theme from "./theme";
 import time from "./time";
 import toast from "./toast";
@@ -22,6 +23,7 @@ export default {
   maps,
   navigation,
   product,
+  server,
   theme,
   time,
   toast,
