@@ -1,6 +1,6 @@
 <!-- 通用表单模态框组件 -->
 <template>
-  <v-dialog v-model="value" :fullscreen="fullscreen" :persistent="persistent" :scrollable="scrollable" :width="dialogWidth">
+  <v-dialog :value="value" @input="$emit('input', $event)" :fullscreen="fullscreen" :persistent="persistent" :scrollable="scrollable" :width="dialogWidth">
     <template #activator="{ on, attrs }">
       <slot name="activator" v-bind:attrs="attrs" v-bind:on="on" />
     </template>
@@ -77,5 +77,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
