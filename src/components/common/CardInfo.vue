@@ -9,11 +9,11 @@
         <slot name="icon" />
       </v-list-item-icon>
       <v-list-item-content>
-        <v-list-item-title>
+        <v-list-item-title :class="{ 'text-wrap': wrapTitle }">
           <div v-text="title" />
           <slot name="title" />
         </v-list-item-title>
-        <v-list-item-subtitle>
+        <v-list-item-subtitle :class="{ 'text-wrap': wrapSubtitle }">
           <div v-text="subtitle" />
           <slot name="subtitle" />
         </v-list-item-subtitle>
@@ -36,6 +36,8 @@ export default {
     title: String,
     subtitle: String,
     advanceIcon: Boolean,
+    wrapTitle: Boolean,
+    wrapSubtitle: Boolean,
   },
 };
 </script>
