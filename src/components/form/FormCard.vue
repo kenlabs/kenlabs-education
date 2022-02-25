@@ -30,7 +30,15 @@
     <v-card-actions>
       <v-spacer />
       <slot name="formActions" />
-      <v-btn :color="submitColor" :disabled="status.submitting" :loading="status.submitting" text @click="handleSubmit" v-text="submitText" />
+      <v-btn
+        :block="$vuetify.breakpoint.mobile"
+        :color="submitColor"
+        :disabled="status.submitting"
+        :loading="status.submitting"
+        text
+        @click="handleSubmit"
+        v-text="submitText"
+      />
     </v-card-actions>
   </v-card>
 </template>
