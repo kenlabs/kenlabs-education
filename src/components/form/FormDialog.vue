@@ -4,7 +4,15 @@
     <template #activator="{ on, attrs }">
       <slot name="activator" v-bind:attrs="attrs" v-bind:on="on" />
     </template>
-    <form-card :icon="icon" :submit-color="submitColor" :submit-text="submitText" :subtitle="subtitle" :title="title" @submit="handleSubmit">
+    <form-card
+      :icon="icon"
+      :submit-color="submitColor"
+      :submit-text="submitText"
+      :submit-block="submitBlock"
+      :subtitle="subtitle"
+      :title="title"
+      @submit="handleSubmit"
+    >
       <slot />
       <template #formActions>
         <slot name="formActions" />
@@ -62,6 +70,10 @@ export default {
       type: String,
       default: "提交",
     },
+    submitBlock: {
+      type: Boolean,
+      default: false,
+    },
     dialogWidth: {
       type: Number,
       default: 640,
@@ -77,3 +89,5 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>

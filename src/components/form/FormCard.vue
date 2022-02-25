@@ -31,7 +31,7 @@
       <v-spacer />
       <slot name="formActions" />
       <v-btn
-        :block="$vuetify.breakpoint.mobile"
+        :block="submitBlock"
         :color="submitColor"
         :disabled="status.submitting"
         :loading="status.submitting"
@@ -66,6 +66,10 @@ export default {
     submitText: {
       type: String,
       default: "提交",
+    },
+    submitBlock: {
+      type: Boolean,
+      default: false,
     },
     disabled: {
       type: Boolean,
