@@ -20,7 +20,7 @@
         <slot name="infoActions" />
       </v-list-item-action>
     </v-list-item>
-    <v-divider class="mb-2" />
+    <v-divider />
     <v-card-text>
       <v-form ref="form" :disabled="status.submitting || disabled">
         <slot />
