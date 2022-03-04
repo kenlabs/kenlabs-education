@@ -25,7 +25,7 @@ export default {
       required: true,
     },
     value: {
-      type: String || Array,
+      type: String | Array,
     },
     multiple: {
       type: Boolean,
