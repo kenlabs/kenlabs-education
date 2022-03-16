@@ -32,7 +32,7 @@ export default function ({ app, $axios }, inject) {
     app.$toast.global.error(message);
   });
   inject("download", (url) => {
-    $axios.get(url, { responseType: "blob" }).then((res) => {
+    return $axios.get(url, { responseType: "blob" }).then((res) => {
       const filename = decodeURI(res.headers["content-disposition"].match(/filename=(.*)/)[1]);
       const blob = new Blob([res.data], { type: res.headers["content-type"] });
       if (typeof window.navigator.msSaveBlob !== "undefined") {
