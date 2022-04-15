@@ -1,7 +1,7 @@
 import Vue from "vue";
 import moment from "moment";
 
-export default ({store}) => {
+export default ({ store }) => {
   Vue.filter("fromNow", (value) => {
     if (value) {
       const time = moment(value);
