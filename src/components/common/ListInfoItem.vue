@@ -2,7 +2,7 @@
 <template>
   <v-list-item dense :disabled="disabled">
     <v-list-item-icon v-if="icon" class="align-self-center">
-      <icon full-width :icon="icon" />
+      <icon full-width :icon="icon" :color="iconColor" />
     </v-list-item-icon>
     <v-list-item-icon v-if="advanceIcon" class="align-self-center">
       <slot name="icon" />
@@ -32,6 +32,7 @@ export default {
   components: { Icon },
   props: {
     icon: String,
+    iconColor: String,
     title: String | Number,
     subtitle: String | Number,
     text: String | Number,
