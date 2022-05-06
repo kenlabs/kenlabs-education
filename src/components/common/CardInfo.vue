@@ -3,7 +3,7 @@
   <v-list>
     <v-list-item>
       <v-list-item-icon v-if="icon">
-        <icon :icon="icon" />
+        <icon :icon="icon" :color="iconColor" :small="small" :x-small="xSmall" :full-width="fullWidth" :large="large" :x-large="xLarge" />
       </v-list-item-icon>
       <v-list-item-icon v-if="advanceIcon">
         <slot name="icon" />
@@ -33,11 +33,17 @@ export default {
   components: { Icon },
   props: {
     icon: String,
+    iconColor: String,
     title: String,
     subtitle: String,
     advanceIcon: Boolean,
     wrapTitle: Boolean,
     wrapSubtitle: Boolean,
+    small: Boolean,
+    xSmall: Boolean,
+    large: Boolean,
+    xLarge: Boolean,
+    fullWidth: Boolean,
   },
 };
 </script>
