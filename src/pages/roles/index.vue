@@ -49,7 +49,7 @@
         </template>
       </entity-table>
     </v-skeleton-loader>
-    <form-dialog v-model="permission.dialog.show" icon="lock-keyhole" title="分配权限" subtitle="请选择要为该角色分配的权限">
+    <form-dialog v-model="permission.dialog.show" icon="lock-keyhole" title="分配权限" subtitle="请选择要为该角色分配的权限" @submit="submitPermissions">
       <v-treeview
         v-model="permission.dialog.item.permissions"
         dense
@@ -68,15 +68,6 @@
         </div>
       </template>
     </form-dialog>
-    <v-dialog width="640">
-      <v-card>
-        <v-card-text></v-card-text>
-        <v-divider />
-        <v-card-actions>
-          <v-btn text color="primary" :disabled="permission.status.submitting" :loading="permission.status.submitting" @click="submitPermissions"> 保存 </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </div>
 </template>
 
