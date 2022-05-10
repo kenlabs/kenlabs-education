@@ -278,6 +278,13 @@ export default {
       type: String,
       default: "magnifying-glass",
     },
+    /*
+     * 表格过滤参数处理器
+     * */
+    filterSerializer: {
+      type: Function,
+      default: function (params) {},
+    },
 
     /*
      * 数据表格属性
@@ -531,6 +538,11 @@ export default {
       if (this.filter.search && this.filter.field) {
         params[this.filter.field.value] = this.filter.search;
       }
+
+      /*
+       * 对过滤参数进行处理
+       * */
+      this.filterSerializer(params);
 
       this.status.fetching = true;
       this.$axios
