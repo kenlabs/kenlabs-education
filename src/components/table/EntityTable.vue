@@ -28,45 +28,55 @@
     </v-list-item>
     <v-divider v-if="!disableTableActionBar" />
     <!-- 表级操作工具栏 -->
-    <v-app-bar v-if="!disableTableActionBar" flat>
+    <v-toolbar v-if="!disableTableActionBar" flat>
       <slot name="tableActions" />
       <v-spacer />
       <v-spacer />
       <v-spacer />
-      <slot name="filter">
-        <div v-if="!disableFilter" class="d-flex flex-grow-1">
-          <v-autocomplete
-            v-if="filterFields.length > 1"
-            v-model="filter.field"
-            dense
-            rounded
-            filled
-            hide-details
-            return-object
-            class="mr-1 flex-grow-0"
-            item-text="name"
-            :disabled="status.fetching"
-            :items="filterFields"
-            :value="filterFields[0]"
-          />
-          <v-text-field
-            v-model="filter.search"
-            dense
-            rounded
-            filled
-            hide-details
-            class="flex-grow-1"
-            :disabled="status.fetching"
-            :placeholder="filter.field.desc"
-            @keypress.enter="fetchItems()"
-          >
-            <template #append>
-              <icon :icon="filterIcon" />
-            </template>
-          </v-text-field>
-        </div>
-      </slot>
-    </v-app-bar>
+      <div v-if="!disableFilter && !filter.showAdvance" class="d-flex flex-grow-1">
+        <v-autocomplete
+          v-if="filterFields.length > 1"
+          v-model="filter.field"
+          dense
+          rounded
+          filled
+          hide-details
+          return-object
+          class="mr-1 flex-grow-0"
+          item-text="name"
+          :disabled="status.fetching"
+          :items="filterFields"
+          :value="filterFields[0]"
+        />
+        <v-text-field
+          v-model="filter.search"
+          dense
+          rounded
+          filled
+          hide-details
+          class="flex-grow-1"
+          :disabled="status.fetching"
+          :placeholder="filter.field.desc"
+          @keypress.enter="fetchItems()"
+        >
+          <template #append>
+            <icon :icon="filterIcon" />
+          </template>
+        </v-text-field>
+      </div>
+      <template v-if="enableAdvanceFilter">
+        <v-btn text v-if="filter.showAdvance" @click="filter.showAdvance = false" color="primary" class="ml-1">普通搜索 </v-btn>
+        <v-btn text v-else @click="filter.showAdvance = true" color="primary" class="ml-1">高级搜索</v-btn>
+      </template>
+    </v-toolbar>
+    <v-card-text v-if="enableAdvanceFilter && filter.showAdvance">
+      <slot name="advanceFilter" v-bind:params="filter.advance" />
+      <div class="d-flex">
+        <v-spacer />
+        <v-btn text color="primary" @click="fetchItems">搜索</v-btn>
+        <v-btn text color="grey" @click="resetAdvanceFilter">重置</v-btn>
+      </div>
+    </v-card-text>
     <!-- 数据表格 -->
     <v-divider />
     <v-data-table
@@ -233,6 +243,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    /* 是否开启高级搜索 */
+    enableAdvanceFilter: {
+      type: Boolean,
+      default: false,
+    },
     /* 是否禁用分页 */
     disablePagination: {
       type: Boolean,
@@ -272,6 +287,13 @@ export default {
             value: "search",
           },
         ];
+      },
+    },
+    /* 高级搜索的搜索参数默认对象 */
+    defaultAdvanceFilterParams: {
+      type: Object,
+      default() {
+        return {};
       },
     },
     filterIcon: {
@@ -425,6 +447,9 @@ export default {
       filter: {
         search: null,
         field: this.filterFields[0],
+        showAdvance: false,
+        /* 高级搜索对象 */
+        advance: {},
       },
       status: {
         /* 是否在获取数据 */
@@ -529,14 +554,18 @@ export default {
       /*
        * 根据当前分页和过滤参数获取数据
        * */
-      const params = {
+      let params = {
         ...additionalSearchParams,
         page: this.pagination.number,
         size: this.pagination.size,
       };
 
-      if (this.filter.search && this.filter.field) {
-        params[this.filter.field.value] = this.filter.search;
+      if (this.filter.showAdvance) {
+        params = { ...params, ...this.filter.advance };
+      } else {
+        if (this.filter.search && this.filter.field) {
+          params[this.filter.field.value] = this.filter.search;
+        }
       }
 
       /*
@@ -659,6 +688,10 @@ export default {
             });
         }
       }
+    },
+    resetAdvanceFilter() {
+      this.filter.advance = { ...this.defaultAdvanceFilterParams };
+      this.fetchItems();
     },
   },
 };
