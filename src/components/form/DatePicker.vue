@@ -39,7 +39,7 @@ export default {
   name: "DatePicker",
   props: {
     value: {
-      type: String,
+      type: String | Array,
     },
     label: {
       type: String,
