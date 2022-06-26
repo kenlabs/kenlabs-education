@@ -20,7 +20,7 @@ export default {
     { src: "~/filters/capitalize.js" },
     { src: "~/filters/formatCurrency.js" },
     { src: "~/filters/formatDate.js" },
-    { src: "~/filters/formatDate.js" },
+    { src: "~/filters/fromNow.js" },
     { src: "~/filters/lowercase.js" },
     { src: "~/filters/uppercase.js" },
   ],
