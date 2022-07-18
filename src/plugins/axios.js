@@ -31,26 +31,49 @@ export default function ({ app, $axios }, inject) {
     }
     app.$toast.global.error(message);
   });
-  inject("download", (url) => {
-    return $axios.get(url, { responseType: "blob" }).then((res) => {
-      const filename = decodeURI(res.headers["content-disposition"].match(/filename=(.*)/)[1]);
-      const blob = new Blob([res.data], { type: res.headers["content-type"] });
-      if (typeof window.navigator.msSaveBlob !== "undefined") {
-        window.navigator.msSaveBlob(blob, filename);
-      } else {
-        const url = window.URL.createObjectURL(blob);
-        const tempLink = document.createElement("a");
-        tempLink.style.display = "none";
-        tempLink.href = url;
-        tempLink.setAttribute("download", filename);
-        if (typeof tempLink.download === "undefined") {
-          tempLink.setAttribute("target", "_blank");
+  inject("download", (url, data) => {
+    if (data) {
+      return $axios.post(url, data, { responseType: "blob" }).then((res) => {
+        const filename = decodeURI(res.headers["content-disposition"].match(/filename=(.*)/)[1]);
+        const blob = new Blob([res.data], { type: res.headers["content-type"] });
+        if (typeof window.navigator.msSaveBlob !== "undefined") {
+          window.navigator.msSaveBlob(blob, filename);
+        } else {
+          const url = window.URL.createObjectURL(blob);
+          const tempLink = document.createElement("a");
+          tempLink.style.display = "none";
+          tempLink.href = url;
+          tempLink.setAttribute("download", filename);
+          if (typeof tempLink.download === "undefined") {
+            tempLink.setAttribute("target", "_blank");
+          }
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
+          window.URL.revokeObjectURL(url);
         }
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
-        window.URL.revokeObjectURL(url);
-      }
-    });
+      });
+    } else {
+      return $axios.get(url, { responseType: "blob" }).then((res) => {
+        const filename = decodeURI(res.headers["content-disposition"].match(/filename=(.*)/)[1]);
+        const blob = new Blob([res.data], { type: res.headers["content-type"] });
+        if (typeof window.navigator.msSaveBlob !== "undefined") {
+          window.navigator.msSaveBlob(blob, filename);
+        } else {
+          const url = window.URL.createObjectURL(blob);
+          const tempLink = document.createElement("a");
+          tempLink.style.display = "none";
+          tempLink.href = url;
+          tempLink.setAttribute("download", filename);
+          if (typeof tempLink.download === "undefined") {
+            tempLink.setAttribute("target", "_blank");
+          }
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
+          window.URL.revokeObjectURL(url);
+        }
+      });
+    }
   });
 }
