@@ -14,7 +14,7 @@
     hide-details
     item-text="nickname"
     return-object
-    @change="$emit('change', $event)"
+    @change="$emit('input', $event)"
     @update:search-input="fetchAccounts"
   />
 </template>
