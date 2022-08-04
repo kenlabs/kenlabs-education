@@ -12,9 +12,6 @@
         <v-btn v-permission:client:update color="primary" small text @click="$refs.table.openUpdateForm(item)">修改 </v-btn>
         <v-btn v-permission:client:assign color="primary" small text @click="openAssignDialog(item)"> 分配员工</v-btn>
       </template>
-      <template #batchActions="{ selected }">
-        <v-btn v-permission:client:delete :disabled="!selected.length" color="red" text @click="$refs.table.openDeleteDialog(selected)"> 删除 </v-btn>
-      </template>
       <template #form="{ item }">
         <v-row dense>
           <v-col cols="6">
