@@ -12,9 +12,9 @@
         <v-btn v-permission:client:update color="primary" small text @click="$refs.table.openUpdateForm(item)">修改 </v-btn>
         <v-btn v-permission:client:assign color="primary" small text @click="openAssignDialog(item)"> 分配员工</v-btn>
       </template>
-      <template #form="{ item }">
+      <template #form="{ item, mode }">
         <v-row dense>
-          <v-col cols="6">
+          <v-col v-if="mode === 'create'" cols="6">
             <text-field v-model.trim="item.weixinId" label="* 微信号" />
           </v-col>
           <v-col cols="6">
@@ -23,10 +23,10 @@
           <v-col cols="4">
             <text-field v-model.trim="item.name" label="姓名" />
           </v-col>
-          <v-col cols="4">
+          <v-col v-if="mode === 'create'" cols="4">
             <text-field v-model.trim="item.mobile" label="手机号" />
           </v-col>
-          <v-col cols="4">
+          <v-col v-if="mode === 'create'" cols="4">
             <text-field v-model.trim="item.email" label="邮箱" />
           </v-col>
           <v-col cols="4">
@@ -98,11 +98,6 @@ export default {
     return {
       headers: [
         {
-          text: "ID",
-          value: "id",
-          align: "center",
-        },
-        {
           text: "分配员工",
           value: "owner",
           align: "center",
@@ -137,6 +132,11 @@ export default {
         {
           text: "生日",
           value: "birthday",
+          align: "center",
+        },
+        {
+          text: "标签",
+          value: "labels",
           align: "center",
         },
         {
@@ -190,6 +190,7 @@ export default {
         form.reset();
         this.dialog.show = false;
         this.$toast.global.success("员工已分配");
+        this.$refs.table.fetchItems();
       });
     },
   },

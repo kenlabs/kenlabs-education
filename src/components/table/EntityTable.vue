@@ -130,7 +130,7 @@
         <v-divider class="mb-2" />
         <v-card-text>
           <v-form ref="form" :disabled="status.submitting">
-            <slot name="form" v-bind:item="dialog.item" />
+            <slot name="form" v-bind:item="dialog.item" v-bind:mode="dialog.mode" />
           </v-form>
         </v-card-text>
         <v-divider />
