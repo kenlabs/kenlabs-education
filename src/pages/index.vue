@@ -1,10 +1,20 @@
 <!-- 首页 -->
 <template>
-  <div class="flex-grow-1"></div>
+  <v-flex grow>
+    <site-header />
+    <div class="sections">
+      <hero-header />
+    </div>
+  </v-flex>
 </template>
 
 <script>
+import SiteHeader from "~/components/app/SiteHeader";
+import HeroHeader from "~/components/app/HeroHeader";
+
 export default {
-  layout: "admin",
+  components: { HeroHeader, SiteHeader },
+  layout: "simple",
+  auth: false
 };
 </script>
