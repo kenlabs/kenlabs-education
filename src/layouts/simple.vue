@@ -24,8 +24,4 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.main ::selection {
-  background: #ff6d44;
-  color: #fff;
-}
 </style>

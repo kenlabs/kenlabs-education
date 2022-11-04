@@ -3,3 +3,26 @@
 
 // Custom Vuetify Style Overrides
 @import './vuetify/overrides.scss';
+
+.body ::selection, .html ::selection {
+  background: #ff6d44;
+  color: #fff;
+}
+
+.h1 {
+  background: linear-gradient(100deg, #ff6d44, #ffb26b 33%, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4.375rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.h3 {
+  background: linear-gradient(100deg, #ff6d44, #ffb26b 33%, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.125rem;
+  font-weight: 300;
+  line-height: 1.4;
+}

@@ -78,19 +78,6 @@ export default {
   user-select: none;
 }
 
-img {
-  margin: 4.75rem 0;
-}
-
-.h1 {
-  background: linear-gradient(100deg, #ff6d44, #ffb26b 33%, #fff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 4.375rem;
-  font-weight: 300;
-  line-height: 1.1;
-}
-
 .description {
   text-align: right;
   width: 50%;
@@ -99,5 +86,10 @@ img {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5;
+}
+
+
+img {
+  margin: 4.75rem 0;
 }
 </style>
