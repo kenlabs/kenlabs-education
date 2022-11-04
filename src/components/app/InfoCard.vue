@@ -1,6 +1,6 @@
 <template>
   <div class="image-card" :class="tall ? 'tall' : ''">
-    <div class="label" v-text="label" />
+    <div v-if="label" class="label" v-text="label" />
     <div class="title-text" v-text="title" />
     <div class="desc-text" v-text="desc" />
   </div>
