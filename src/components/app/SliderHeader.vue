@@ -103,6 +103,20 @@ export default {
   padding: 1.375rem 0;
   margin-bottom: 0.75rem;
   position: relative;
+
+  &:after {
+    transform: translateY(calc(100% - 5rem));
+    background-size: 1440px;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 640px;
+    background-image: url("/images/perspective-grid-c.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
 }
 
 .image {
