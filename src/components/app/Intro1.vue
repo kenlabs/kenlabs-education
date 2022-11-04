@@ -1,6 +1,6 @@
 <template>
   <section id="intro_1">
-    <div class="image px-6">
+    <div class="px-6">
       <v-row dense>
         <v-col cols="6">
           <div class="h3 mb-2">Infrastructure for the Metaverse</div>
@@ -17,7 +17,11 @@
           </div>
         </v-col>
         <v-col cols="6">
-          <v-img src="/images/3d-skateboarder-kickflip.png" />
+          <div class="image-container">
+            <div class="image">
+              <v-img src="/images/3d-skateboarder-kickflip.png" />
+            </div>
+          </div>
         </v-col>
       </v-row>
     </div>
@@ -54,12 +58,16 @@ export default {
   line-height: 1.5;
 }
 
+.image-container {
+  position: relative;
+}
+
 .image:before {
   content: "";
   position: absolute;
-  top: -6rem;
-  right: 6rem;
-  width: calc(40% - 2rem);
+  top: -4rem;
+  right: 2rem;
+  width: calc(100% - 2rem);
   height: 100%;
   background-image: url("/images/perspective-grid-a.svg");
   background-repeat: no-repeat;
