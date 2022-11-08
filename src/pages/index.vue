@@ -12,6 +12,7 @@
       <gallery2 />
       <explore-links />
       <gallery3 />
+      <site-footer />
     </div>
   </v-flex>
 </template>
@@ -27,9 +28,11 @@ import Banner from "~/components/app/Banner";
 import Gallery2 from "~/components/app/Gallery2";
 import ExploreLinks from "~/components/app/ExploreLinks";
 import Gallery3 from "~/components/app/Gallery3";
+import SiteFooter from "~/components/app/SiteFooter";
 
 export default {
   components: {
+    SiteFooter,
     Gallery3,
     ExploreLinks,
     Gallery2,
